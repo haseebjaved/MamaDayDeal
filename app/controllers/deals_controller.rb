@@ -5,7 +5,8 @@ class DealsController < ApplicationController
  
   def index
     
-    @deals = JSON.parse(open("https://api.groupon.com/v2/deals/?client_id=0c28cc83918dfc63dcf8d6a798613b6fbb6c6c3e&lat=41.88993&lng=-87.626519").read)
+    @location = Location.last
+    @deals = JSON.parse(open("https://api.groupon.com/v2/deals/?client_id=0c28cc83918dfc63dcf8d6a798613b6fbb6c6c3e&lat=#{@location["lat"]}&lng=#{@location["lng"]}").read)
     
     @type = ["Nester", "Kitchen Couture", "Healthy Living", "Fountain of Youth", "Gadget + Gear",
                 "Home Improvement", "Audiophile", "Threads", "Cultural Pursuits", "Pampered", 
@@ -14,8 +15,13 @@ class DealsController < ApplicationController
     
   end
 
-  def chosendeal
-  
-  end
+  def new
+    	@location = Location.new
+    end
+    def create
+    	@location = Location.new(params[:location])
+    	@location.save
+    	redirect_to '/'
+    end
 
-end
+  end

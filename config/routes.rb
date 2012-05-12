@@ -4,6 +4,10 @@ MamaDayDeal::Application.routes.draw do
   
   get "deals/index"
   
-  get "deals/chosendeal", 'deals#chosendeal'
+  get "locations/new", controller: "deals", action: "new"
+  
+  post "locations", controller: "deals", action: "create"
+  
+  # get "deals/chosendeal", 'deals#chosendeal'
 
 end
