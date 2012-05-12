@@ -1,0 +1,23 @@
+<h1>Deals</h1>
+
+<ol>
+	
+<% @deals["deals"].each	do |deal| %>
+
+	
+	<% if deal["dealTypes"].blank? %>
+	
+	<% elsif @type.index(deal["dealTypes"][0]["name"]) %>
+	
+	<li><p><strong><%= deal["title"]%></strong></p></li>
+	<p>Name: <%= link_to deal["merchant"]["name"], "deal/chosendeal"%> </p>
+	<p>Type: <%= deal["dealTypes"][0]["name"] %></p>
+	<p>More: <%= deal["highlightsHtml"]%></p>
+	<%= image_tag deal["mediumImageUrl"]%>
+	<br><br>
+	<%end%>
+	
+<%end%>
+</ol>
+
+
