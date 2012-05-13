@@ -8,6 +8,6 @@ MamaDayDeal::Application.routes.draw do
   
   post "locations", controller: "deals", action: "create"
   
-  # get "deals/chosendeal", 'deals#chosendeal'
+  get '/choices/:id', controller: "deals", action: "show"
 
 end

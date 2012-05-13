@@ -1,3 +1,7 @@
+<h1>Mother's Day GroupOn Deals</h1>
+
+<h2>Enter info below</h2>
+
 
 <%= form_for @location do |f| %>
 <table>
@@ -9,8 +13,8 @@
 		<th><%= f.label :lng%></th>
 		<td><%= f.text_field(:lng) %></td>
 	</tr>
-
+	<tr><td><%= f.submit "Enter Location" %></td></tr>
 
 </table>
-<p><%= f.submit %></p>
+
 <% end %>

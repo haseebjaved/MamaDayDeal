@@ -18,10 +18,14 @@ class DealsController < ApplicationController
   def new
     	@location = Location.new
     end
+    
     def create
     	@location = Location.new(params[:location])
     	@location.save
     	redirect_to '/'
+    end
+    
+    def show
     end
 
   end

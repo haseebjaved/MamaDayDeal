@@ -1,0 +1,11 @@
+<h1>Happy Mother's Day!!!!</h1>
+
+<% variable = Choice.find_by_id(params[:id])%>
+
+
+<%= variable.name %><br><br>
+<%= variable.title.split('(').first%><br><br>
+<%= variable.highlight.split('>').last.split('<').first%><br><br>
+<%= image_tag variable.image%><br><br>
+
+<%= mail_to "Email Mom"%>
