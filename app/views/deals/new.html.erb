@@ -6,12 +6,8 @@
 <%= form_for @location do |f| %>
 <table>
 	<tr>
-		<th><%= f.label :lat %></th>
-		<td><%= f.text_field(:lat) %></td>
-	</tr>
-	<tr>
-		<th><%= f.label :lng%></th>
-		<td><%= f.text_field(:lng) %></td>
+		<th><%= f.label :address %></th>
+		<td><%= f.text_field :address %></td>
 	</tr>
 	<tr><td><%= f.submit "Enter Location" %></td></tr>
 

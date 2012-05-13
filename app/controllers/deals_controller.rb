@@ -1,12 +1,13 @@
 require 'open-uri'
 require 'json'
+require 'geocoder'
 
 class DealsController < ApplicationController
  
   def index
     
-    @location = Location.last
-    @deals = JSON.parse(open("https://api.groupon.com/v2/deals/?client_id=0c28cc83918dfc63dcf8d6a798613b6fbb6c6c3e&lat=#{@location["lat"]}&lng=#{@location["lng"]}").read)
+    @location = Geolocation.last
+    @deals = JSON.parse(open("https://api.groupon.com/v2/deals/?client_id=0c28cc83918dfc63dcf8d6a798613b6fbb6c6c3e&lat=#{@location["latitude"]}&lng=#{@location["longitude"]}").read)
     
     @type = ["Nester", "Kitchen Couture", "Healthy Living", "Fountain of Youth", "Gadget + Gear",
                 "Home Improvement", "Audiophile", "Threads", "Cultural Pursuits", "Pampered", 
@@ -16,11 +17,11 @@ class DealsController < ApplicationController
   end
 
   def new
-    	@location = Location.new
+    	@location = Geolocation.new
     end
     
     def create
-    	@location = Location.new(params[:location])
+    	@location = Geolocation.new(params[:geolocation])
     	@location.save
     	redirect_to '/'
     end
